@@ -1,0 +1,30 @@
+{
+  "functions":    [{
+    "source": ".output/server",
+    "codebase": "default",
+    "ignore": [".git", "firebase-debug.log", "firebase-debug.*.log"]
+  }
+
+  ],
+  "hosting": {
+    "public": ".output/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true,
+      "port": 8081
+    },
+    "singleProjectMode": true
+  }
+}
