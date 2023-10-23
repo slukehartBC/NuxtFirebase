@@ -2,7 +2,8 @@
   "functions":    [{
     "source": ".output/server",
     "codebase": "default",
-    "ignore": [".git", "firebase-debug.log", "firebase-debug.*.log"]
+    "ignore": [".git", "firebase-debug.log", "firebase-debug.*.log"],
+
   }
 
   ],
@@ -19,7 +20,7 @@
       "port": 5001
     },
     "hosting": {
-      "port": 5000
+      "port": 5002
     },
     "ui": {
       "enabled": true,

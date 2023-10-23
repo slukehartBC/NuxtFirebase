@@ -4,17 +4,12 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
 
     nitro: {
-
         // for the upcoming preset
         preset: './preset'
     },
-
     modules: ['nuxt-vuefire', '@vueuse/nuxt'],
-
     vuefire: {
         auth: true,
-
-
         config: {
             apiKey: "AIzaSyBZeu1dM8k892i_jCdH_LI1hbUFUQ-BO1o",
             authDomain: "nuxt3workingexample.firebaseapp.com",
