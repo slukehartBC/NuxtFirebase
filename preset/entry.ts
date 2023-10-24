@@ -13,13 +13,9 @@ export const server = onRequest(
 
 );
 
-export const helloWorld = functions.region('us-east1').https.onRequest(
-    (request, response) => {
-        toNodeListener(nitroApp.h3App)
-        response.json("hello world")
-    },
-
-);
+export const helloWorld = functions.region('us-east1').https.onCall(async () => {
+    return { message: 'Hello, World' };
+});
 // export const server = onRequest(
 //     {
 //         region: "us-east1"

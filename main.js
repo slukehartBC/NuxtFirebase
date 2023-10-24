@@ -1,7 +1,15 @@
 import { createApp } from 'vue'
+import { VueFire, VueFireAuth } from 'vuefire'
 import App from './App.vue'
+// the file we created above with `database`, `firestore` and other exports
 
-import { initializeApp } from 'firebase-admin/app';
 const app = createApp(App)
-initializeApp();
+app.use(VueFire, {
+    // imported above but could also just be created here
+    modules: [
+        // we will see other modules later on
+        VueFireAuth(),
+    ],
+})
+
 app.mount('#app')

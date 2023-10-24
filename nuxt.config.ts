@@ -1,8 +1,14 @@
-
 export default defineNuxtConfig({
     // Having SSR allows us to use `nuxt generate`, turn it off if you don't care
     ssr: true,
-    devtools: { enabled: true },
+    devtools: {
+        enabled: true,
+        timeline: {
+            enabled: true,
+
+        },
+    },
+
 
     nitro: {
         // for the upcoming preset
