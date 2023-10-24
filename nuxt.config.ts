@@ -1,3 +1,4 @@
+
 export default defineNuxtConfig({
     // Having SSR allows us to use `nuxt generate`, turn it off if you don't care
     ssr: true,
@@ -5,7 +6,10 @@ export default defineNuxtConfig({
 
     nitro: {
         // for the upcoming preset
-        preset: './preset'
+        preset: './preset',
+        firebase: {
+            region: "us-east1"
+        }
     },
     modules: ['nuxt-vuefire', '@vueuse/nuxt'],
     vuefire: {

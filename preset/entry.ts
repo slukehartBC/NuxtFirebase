@@ -1,5 +1,5 @@
 import '#internal/nitro/virtual/polyfill'
-import { onRequest } from 'firebase-functions/v2/https'
+import { onRequest } from 'firebase-functions/v1/https'
 import functions from 'firebase-functions'
 const nitroApp = useNitroApp()
 const config = useRuntimeConfig()
