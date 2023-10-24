@@ -13,6 +13,7 @@
     "@nuxt/devtools": "latest",
     "firebase-admin": "^11.11.0",
     "firebase-functions": "^4.1.0",
+    "husky": "^8.0.3",
     "nuxt": "^3.8.0",
     "vue": "^3.3.6",
     "vue-router": "^4.2.5"
