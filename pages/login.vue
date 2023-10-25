@@ -37,13 +37,16 @@
 
 <script setup>
 /*import { useRouter } from 'nuxt';*/
-
+import {signInUser} from "~/composables/useFirebaseAuth.ts"
 
 definePageMeta({
   layout: "auth",
 });
-const { email, password, login, error } = useLogin();
+const { email, password } = await signInUser(email, password);
 const router = useRouter();
+
+/*const credentials = await createUser(email,password);
+console.log(credentials)*/
 
 const navigateToForgotPassword = () => {
   router.push('/password');
