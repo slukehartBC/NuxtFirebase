@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { VueFire, VueFireAuth } from 'vuefire'
+// @ts-ignore
 import App from './App.vue'
 // the file we created above with `database`, `firestore` and other exports
 

@@ -1,0 +1,42 @@
+// main.scss
+//Bootstrap Config
+@import 'bootstrap/scss/bootstrap';
+
+// Base/Foundation Styles
+//@import 'base/reset';
+@import './base/_typography';
+//@import 'base/global';
+
+// Variables and Config
+/*@import 'variables';*/
+//@import 'mixins';
+
+// Layouts and Structural Styles
+//@import 'layouts/header';
+//@import 'layouts/footer';
+//@import 'layouts/sidebar';
+//@import 'layouts/grid';
+
+// Utilities
+//@import 'utilities/spacing-utils';
+//@import 'utilities/display-utils';
+//@import 'utilities/typography-utils';
+//@import 'utilities/breakpoint-utils';
+//@import 'utilities/flex-grid-utils';
+// and any other utility styles you have
+
+// Component Styles
+// If you have global component styles, they would be imported here.
+// Note: Component-specific styles co-located with their .vue files wouldn't be imported here.
+// @import 'components/buttons';
+// @import 'components/modals';
+// and so forth
+
+// Themes (if applicable)
+// @import 'themes/light';
+// @import 'themes/dark';
+
+// Vendor or Third-party Styles (if any)
+// @import 'vendor/bootstrap';
+
+// Any other styles specific to your project...

@@ -1,0 +1,95 @@
+// _typography.scss
+
+// Font Imports (if using web fonts)
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+// Proxima Nova Regular
+@font-face {
+  font-family: 'proximanova-regular';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/proximanova_regular/proximanova-regular-webfont.woff2') format("truetype"),
+       url('../fonts/proximanova_regular/proximanova-regular-webfont.woff') format("truetype");
+
+}
+
+// Proxima Nova Bold
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: bold;
+  font-style: normal;
+  src: url('../fonts/proximanova_bold/proximanova-bold-webfont.woff2') format("truetype"),
+       url('../fonts/proximanova_bold/proximanova-bold-webfont.woff') format("truetype");
+}
+
+// Proxima Nova Light
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: 300; // Generally, "light" is represented by font-weight 300
+  font-style: normal;
+  src: url('../fonts/proximanova_light/proximanova-light-webfont.woff2') format("truetype"),
+       url('../fonts/proximanova_light/proximanova-light-webfont.woff') format("truetype");
+}
+
+// Proxima Nova Medium
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: 500; // Generally, "medium" is represented by font-weight 500
+  font-style: normal;
+  src: url('../fonts/proximanova_medium/proximanova-medium-webfont.woff2') format("truetype"),
+       url('../fonts/proximanova_medium/proximanova-medium-webfont.woff') format("truetype");
+}
+
+// Proxima Nova Condensed Bold
+@font-face {
+  font-family: 'Proxima Nova Condensed';
+  font-weight: bold;
+  font-style: normal;
+  src: url('../fonts/proximanova_condensed_bold/proximanovacond-bold-webfont.woff2') format("truetype"),
+       url('../fonts/proximanova_condensed_bold/proximanovacond-bold-webfont.woff') format("truetype");
+}
+
+// Base Typography
+body {
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px; // Base size
+  font-weight: 500; // Regular weight
+  line-height: 1.5;
+  color: #333; // Base color
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+// h1 { font-size: 2.5em; }
+// h2 { font-size: 2em; }
+// h3 { font-size: 1.75em; }
+// h4 { font-size: 1.5em; }
+// h5 { font-size: 1.25em; }
+// h6 { font-size: 1em; }
+
+h1 { font-size: clamp(32px, 2.5vw, 48px); }
+h2 { font-size: clamp(28px, 2.2vw, 42px); }
+h3 { font-size: clamp(24px, 1.9vw, 38px); }
+h4 { font-size: clamp(20px, 1.6vw, 32px); }
+h5 { font-size: clamp(18px, 1.3vw, 28px); }
+h6 { font-size: clamp(16px, 1vw, 24px); }
+
+a {
+  color: #3498db; // Example color
+  transition: color 0.3s ease;
+  &:hover {
+    color: #2980b9; // Darker shade for hover
+  }
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+// Other typography-related styles as needed...
+

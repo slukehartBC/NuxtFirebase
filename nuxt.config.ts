@@ -1,5 +1,7 @@
+
 export default defineNuxtConfig({
     // Having SSR allows us to use `nuxt generate`, turn it off if you don't care
+    // @ts-ignore
     ssr: true,
     devtools: {
         enabled: true,
@@ -8,8 +10,6 @@ export default defineNuxtConfig({
 
         },
     },
-
-
     nitro: {
         // for the upcoming preset
         preset: './preset',
@@ -17,7 +17,19 @@ export default defineNuxtConfig({
             region: "us-east1"
         }
     },
-    modules: ['nuxt-vuefire', '@vueuse/nuxt'],
+    plugins: [
+        '~/plugins/useBootstrap.client.ts',
+    ],
+    css: [
+        'primevue/resources/themes/bootstrap4-light-blue/theme.css',
+        `~/assets/scss/main.scss`,
+    ],
+    modules: [
+        'nuxt-vuefire',
+        '@vueuse/nuxt',
+        'nuxt-primevue',
+        '@pinia/nuxt',
+    ],
     vuefire: {
         auth: true,
         config: {
@@ -30,7 +42,28 @@ export default defineNuxtConfig({
             measurementId: "G-PT4QC442ZR"
         },
     },
-
+    primevue: {
+        usePrimeVue: true,
+        options: {},
+        components: {
+            prefix: '',
+            name: undefined,
+            include: ['DataTable', 'SubmitButton', 'Message', 'InputText', 'Button', 'Card'],
+            exclude: undefined
+        },
+        directives: {
+            prefix: '',
+            name: undefined,
+            include: undefined,
+            exclude: undefined
+        },
+        composables: {
+            prefix: '',
+            name: undefined,
+            include: undefined,
+            exclude: undefined
+        }
+    },
     experimental: {
         payloadExtraction: false,
     },

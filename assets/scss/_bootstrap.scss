@@ -1,0 +1,34 @@
+/*// _bootstrap.scss
+
+// Required dependencies first
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & Grid system
+@import "~bootstrap/scss/layout/containers";
+@import "~bootstrap/scss/layout/grid";
+@import "~bootstrap/scss/layout/gutters";
+@import "~bootstrap/scss/layout/columns";
+
+// Content
+@import "~bootstrap/scss/content/reboot";
+@import "~bootstrap/scss/content/type";
+@import "~bootstrap/scss/content/images";
+@import "~bootstrap/scss/content/tables";
+
+// Components (only include what you need)
+@import "~bootstrap/scss/components/alerts";
+// @import "~bootstrap/scss/components/badge";  // Commented out to exclude from the build
+@import "~bootstrap/scss/components/breadcrumb";
+@import "~bootstrap/scss/components/buttons";
+// ... other component imports ...
+
+// Helpers
+@import "~bootstrap/scss/helpers/clearfix";
+@import "~bootstrap/scss/helpers/position";
+@import "~bootstrap/scss/helpers/visibility";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";*/
