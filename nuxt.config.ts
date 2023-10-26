@@ -33,13 +33,14 @@ export default defineNuxtConfig({
     vuefire: {
         auth: true,
         config: {
-            apiKey: "AIzaSyBZeu1dM8k892i_jCdH_LI1hbUFUQ-BO1o",
-            authDomain: "nuxt3workingexample.firebaseapp.com",
-            projectId: "nuxt3workingexample",
-            storageBucket: "nuxt3workingexample.appspot.com",
-            messagingSenderId: "659448654143",
-            appId: "1:659448654143:web:5de44dec3b5152f6e90b8a",
-            measurementId: "G-PT4QC442ZR"
+            apiKey: "AIzaSyDnPZtjSAJTXjTgdFnRaJyxJRvx5lYmXvE",
+            authDomain: "perceptivity-portal.firebaseapp.com",
+            databaseURL: "https://perceptivity-portal-default-rtdb.firebaseio.com",
+            projectId: "perceptivity-portal",
+            storageBucket: "perceptivity-portal.appspot.com",
+            messagingSenderId: "986312680168",
+            appId: "1:986312680168:web:5cbfa10c019c1bdb575f5d",
+            measurementId: "G-B315KT3JVV",
         },
     },
     primevue: {

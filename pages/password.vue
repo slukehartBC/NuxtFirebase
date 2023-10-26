@@ -5,7 +5,7 @@
         <i class="fa fa-spinner fa-spin" /> <!--v-if="loading"-->
       </div>
       <!--      <Message severity="error" :closable="true">{{ errorMsg }}</Message>--> <!--v-if="errorMsg && errorMsg.length > 0"-->
-      <Card style="width: 20em; height: 20em;" unstyled>
+      <Card style="width: 20em; height: 2em;" unstyled>
         <template #header>
           <img src="../static/images/bc-logo-transparent%201.svg" alt="Card image" width="100px"/>
         </template>

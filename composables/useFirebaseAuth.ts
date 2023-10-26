@@ -11,7 +11,7 @@ export const createUser = async (email, password) => {
     const credentials = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
     ).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -19,18 +19,33 @@ export const createUser = async (email, password) => {
     return credentials
 }
 
-export const signInUser = async (email, password) => {
+export const signInUser = async (email: string, password: string) => {
     const auth = getAuth();
+    console.log(email, password);
     const credentials = await signInWithEmailAndPassword(
         auth,
-        email.value,
-        password.value
+        email,
+        password
     ).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
     });
     return credentials;
 }
+const login = () => {
+    signInWithEmailAndPassword(auth, email.value, password.value)
+        .then((userCredential) => {
+            console.log("signed in", userCredential);
+            error.value = null;
+            userStore.setUserData(userData);
+            /*        useUserDataStore()DataStore.setUid(userCredential.user.uid);*/
+            navigateTo("/home");
+        })
+        .catch((e) => {
+            console.log("not signed in", e);
+            error.value = e.message;
+        });
+};
 
 export const initUser = async () => {
     const auth = getAuth();

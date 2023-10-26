@@ -1,9 +1,7 @@
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import App from './App.vue';
+import {onAuthStateChanged} from "firebase/auth";
 
-const app = createApp(App);
-const pinia = createPinia();
+export const mutations = () =>{
+    onAuthStateChanged = (state, auth) => {
 
-app.use(pinia);
-app.mount('#app');
+    }
+}

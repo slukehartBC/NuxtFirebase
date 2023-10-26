@@ -1,7 +1,8 @@
 // useLogin.js
-import { ref } from "vue";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useUserDataStore } from "../stores/userDataStore.js";
+import {ref} from "vue";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {useUserDataStore} from "../stores/userDataStore.js";
+import router from "#app/plugins/router.js";
 
 export default function useLogin() {
     const auth = getAuth();
@@ -12,12 +13,12 @@ export default function useLogin() {
     const userUserDataStore = useUserDataStore();
 
     const login = () => {
-        signInWithEmailAndPassword(auth, email.value, password.value)
-            .then((userCredential) => {
+        console.log(email.value);
+        return signInWithEmailAndPassword(auth, email.value, password.value)
+            .then( async (userCredential) => {
                 console.log("signed in", userCredential);
                 error.value = null;
-                userStore.setUserData(userData);
-                /*        useUserDataStore()DataStore.setUid(userCredential.user.uid);*/
+                //return userCredential.user.uid;
                 navigateTo("/home");
             })
             .catch((e) => {
@@ -25,6 +26,5 @@ export default function useLogin() {
                 error.value = e.message;
             });
     };
-
     return { email, password, login, error };
 }

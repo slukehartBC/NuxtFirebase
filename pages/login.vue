@@ -5,7 +5,7 @@
         <i class="fa fa-spinner fa-spin" /> <!--v-if="loading"-->
       </div>
       <!--      <Message severity="error" :closable="true">{{ errorMsg }}</Message>--> <!--v-if="errorMsg && errorMsg.length > 0"-->
-      <Card style="width: 20em; height: 20em;" unstyled>
+      <Card style="width: 20em; height: 22em;" unstyled>
         <template #header>
           <img src="../static/images/bc-logo-transparent%201.svg" alt="Card image" width="100px" />
         </template>
@@ -26,8 +26,8 @@
         </template>
         <template #footer>
           <div class="justify-content-between">
-            <Button class="" label="Forgot Password" severity="help" text @click="navigateToForgotPassword"/> <!--@click="forgotPassword()"-->
-            <Button class="" label="Sign Up" severity="help" text @click="navigateToSignUp"/> <!--@click="isRegisteringOrg"-->
+            <Button class="" label="Forgot Password" severity="help" text @click="navigateToForgotPassword"/>
+            <Button class="" label="Sign Up" severity="help" text @click="navigateToSignUp"/>
           </div>
         </template>
       </Card>
@@ -36,17 +36,44 @@
 </template>
 
 <script setup>
-/*import { useRouter } from 'nuxt';*/
-import {signInUser} from "~/composables/useFirebaseAuth.ts"
+import { signInUser } from "~/composables/useFirebaseAuth.ts"
+import {httpsCallable, getFunctions} from "firebase/functions";
+import InputText from "primevue/inputtext";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {ref} from "vue";
+
+
+
+const functions = getFunctions(useFirebaseApp(), "us-central1");
+
 
 definePageMeta({
   layout: "auth",
 });
-const { email, password } = await signInUser(email, password);
-const router = useRouter();
 
-/*const credentials = await createUser(email,password);
-console.log(credentials)*/
+const router = useRouter();
+/*const { email, password } = signInUser(email, password);*/
+const auth = getAuth();
+const email = ref("");
+const password = ref("");
+const error = ref(null);
+const login = () => {
+  console.log(email.value);
+  return signInWithEmailAndPassword(auth, email.value, password.value)
+      .then( async (userCredential) => {
+        console.log("signed in", userCredential);
+        error.value = null;
+        //return userCredential.user.uid;
+        const uid = userCredential.user.uid;
+        const getUser = httpsCallable(functions, "getUserDetailsByUID");
+        const user = await getUser();
+        console.log(user);
+      })
+      .catch((e) => {
+        console.log("not signed in", e);
+        error.value = e.message;
+      });
+};
 
 const navigateToForgotPassword = () => {
   router.push('/password');

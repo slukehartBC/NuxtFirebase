@@ -16,9 +16,9 @@ export const useUserDataStore = defineStore("userData", {
                 roleName: '',
                 roleEnum: '',
                 roleGroupEnum: '',
-                //isFirstTime: false,
-                //authProvider: '',
-                //isVerified: false,
+                isFirstTime: false,
+                authProvider: '',
+                isVerified: false,
                 //favoriteModuleId: 0,
             },
             originalUser: {
@@ -33,9 +33,9 @@ export const useUserDataStore = defineStore("userData", {
                 roleName: '',
                 roleEnum: '',
                 roleGroupEnum: '',
-                //isFirstTime: false,
-                //authProvider: '',
-                //isVerified: false,
+                isFirstTime: false,
+                authProvider: '',
+                isVerified: false,
                 //favoriteModuleId: 0,
             },
             isStateFetchComplete: false,
@@ -45,15 +45,68 @@ export const useUserDataStore = defineStore("userData", {
         }
     },
     actions: {
-        setUid(uid) {
-            this.user.uid = uid;
+        setUserUid(state, uid) {
+            state.userUid = uid;
         },
-        setUserData(userData) {
-            this.user = userData;
-            this.originalUser = userData;
-            //Currently utilizes populateUserDetails GCF
-            //After utilizing firebase to retrieve UID, we will pass UID to getUserDetailsByUID
-            //This GCF calls the "formatUserObj" currently, which handles the values included above.
+        setUserData: async function (context, userUid){
+            let uid = context.state.user.uid || this.$fire.auth.currentUser.uid;
+
+            if (!uid) {
+                console.log("uid is null");
+                throw errorCard;
+            }
+            if (this.$fire.auth.currentUser.uid === null) {
+                console.log("uuid is null");
+                throw errorCard;
+            }
+            return new Promise(async (resolve, reject) => {
+                try {
+                    const response = await this.$getUserDetailsByUID(uid);
+
+                    var userResponseObj = null;
+                    if (response && response.data && response.data.userId > 0) {
+                        userResponseObj = response.data;
+                    }
+                    var userObj = {
+                        firstTime: userResponseObj ? userResponseObj.isFirstTime : true,
+                        isVerified: userResponseObj ? userResponseObj.isVerified : false,
+                        userId: userResponseObj ? userResponseObj.userId : 0,
+                        displayName: userResponseObj ? userResponseObj.displayName : "",
+                        orgId: userResponseObj ? userResponseObj.orgId : 0,
+                        orgName: userResponseObj ? userResponseObj.orgName : "",
+                        roleId: userResponseObj ? userResponseObj.roleId : 0,
+                        roleName: userResponseObj ? userResponseObj.roleName : "",
+                        roleEnum: userResponseObj ? userResponseObj.roleEnum : "",
+                        roleGroupEnum: userResponseObj ? userResponseObj.roleGroupEnum : "",
+                        authProvider: userResponseObj ? userResponseObj.authProvider : "",
+                        favoriteReportId: userResponseObj ? userResponseObj.favoriteReportId : 0,
+                        isStateFetchComplete: !!userResponseObj,
+                    };
+                    /*var userObj = {
+                        firstTime: userResponseObj ? userResponseObj.isFirstTime : true,
+                        isVerified: userResponseObj ? userResponseObj.isVerified : false,
+                    };*/
+                    if(this.$fire.auth.currentUser.displayName == null && userObj.displayName != null) {
+                        this.$fire.auth.currentUser
+                            .updateProfile({
+                                displayName: userObj.displayName,
+                            })
+                            .then(() => {
+
+                            })
+                            .catch((error) => {
+                                console.error("Error updating display name:", error);
+                            });
+                    }
+                    if (!context.state.isBackstageMode) {
+                        context.commit("setUserDatabaseDetails", userObj);
+                    }
+                    resolve(userObj);
+                } catch (err) {
+                    console.log(err);
+                    reject(err);
+                }
+            })
         },
         updateUserData () {
             //Should this include updateUserName?

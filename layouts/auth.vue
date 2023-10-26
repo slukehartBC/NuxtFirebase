@@ -17,7 +17,7 @@ body {
   left: 0;
   right: 0;
   height: 100%;
-  background-image: url("../../NuxtFirebase/static/images/p3-background.webp");
+  background-image: url("@/static/images/p3-background.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

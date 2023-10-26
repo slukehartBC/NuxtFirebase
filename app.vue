@@ -1,13 +1,11 @@
 <template>
-  <div>
+  <NuxtLayout>
     <NuxtPage/>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script async setup lang="ts">
 import {httpsCallable, getFunctions} from "firebase/functions";
-
-
 
 const functions = getFunctions(useFirebaseApp(), 'us-east1'); // Get functions without specifying the regio
 const helloWorld = httpsCallable(functions, "helloWorld");
